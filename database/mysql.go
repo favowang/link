@@ -5,27 +5,31 @@ import (
 	"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"link/models"
+	//"link/models"
 )
 
-var db gorm.DB
-
+var DB  *gorm.DB
+var err error
 func init() {
-	db, err := gorm.Open("mysql", "root:123456@/linkstore?charset=utf8")
+	DB, err = gorm.Open("mysql", "root:123456@/linkstore?charset=utf8")
 	if err != nil {
 		panic("database connect failed!")
 	}
 
-	fmt.Println("database init()")
+	fmt.Println("database init")
 
-	defer db.Close()
+
 	//	db,err = gorm.Open("mysql","root:123456@tcp(127.0.0.1:3306)/testdb?charset=utf8")
 }
 
-func InsertLinkMap(link LinkMap) (err error) {
-
-	return nil
+func CloseDD(){
+	defer DB.Close()
 }
+
+// func InsertLinkMap(link LinkMap) (err error) {
+
+// 	return nil
+// }
 
 // checkErr(err)
 // stmt, err := db.Prepare("INSERT linkmap SET longurl=?, shorturl=?")
