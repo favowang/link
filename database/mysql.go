@@ -8,8 +8,9 @@ import (
 	//"link/models"
 )
 
-var DB  *gorm.DB
+var DB *gorm.DB
 var err error
+
 func init() {
 	DB, err = gorm.Open("mysql", "root:123456@/linkstore?charset=utf8")
 	if err != nil {
@@ -18,12 +19,9 @@ func init() {
 
 	fmt.Println("database init")
 
+	//defer DB.Close()
 
 	//	db,err = gorm.Open("mysql","root:123456@tcp(127.0.0.1:3306)/testdb?charset=utf8")
-}
-
-func CloseDD(){
-	defer DB.Close()
 }
 
 // func InsertLinkMap(link LinkMap) (err error) {

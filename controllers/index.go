@@ -2,17 +2,32 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	"net/http"
 	"link/models"
-	"fmt"
+	"net/http"
 )
 
 func GetIndex(c *gin.Context) {
+	c.HTML(http.StatusOK, "index/index.html", gin.H{})
+}
+
+func GetShortUrl(c *gin.Context) {
+	longurl := c.PostForm("longurl")
+
+	shorturl := models.GetShortUrl(longurl)
 	c.HTML(http.StatusOK, "index/index.html", gin.H{
-		"pageCount": 1,
+		"longUrl":  longurl,
+		"shortUrl": shorturl,
+	})
+}
+
+func GetLongUrl(c *gin.Context) {
+	shorturl := c.PostForm("shorturl")
+
+	longurl, _ := models.GetLongUrl(shorturl)
+
+	c.HTML(http.StatusOK, "index/index.html", gin.H{
+		"longUrl":  longurl,
+		"shortUrl": shorturl,
 	})
 
-	fmt.Println("domodel")
-
-	models.Add("123","456")
 }

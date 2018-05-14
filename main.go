@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 	// _ "github.com/go-sql-driver/mysql"
 	//"net/http"
-	_ "link/database"
+	. "link/database"
 )
 
 func main() {
@@ -20,7 +20,10 @@ func main() {
 	router.LoadHTMLGlob("views/**/*")
 
 	router.GET("/", controllers.GetIndex)
-
+	router.POST("/getShortUrl", controllers.GetShortUrl)
+	router.POST("/getLongUrl", controllers.GetLongUrl)
+	router.Static("/static", "./static")
+	defer DB.Close()
 	router.Run(":8080")
 }
 

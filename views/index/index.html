@@ -3,28 +3,58 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
-  <!--   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！
-    <title>Bootstrap 101 Template</title>
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>link map</title>
 
-    <!-- Bootstrap -->
-<!--     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> --> -->
+    <link href="/static/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
-    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
-    <!--[if lt IE 9]>
-      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
-    <h1>你好，世界！</h1>
+  <div class="panel panel-default" style="height: 400px; width: 40%; margin-left: 30%; margin-top:40px ">
+   <div class="panel-heading" align="center">Link Map</div>
+  <div class="panel-body" >
 
+
+
+  </div>
+      <div class="row" >
+        <div class="col-md-offset-1 col-md-10">
+        <form action="/getShortUrl" method="post" id="postForm1" class="form-group">
+          <div class="input-group" >
+            <span class="input-group-btn">
+              <text class="btn btn-default" type="text" >Long Url</text>
+            </span>
+            <input type="text" class="form-control" name="longurl" placeholder="Generate for short url" value="{{.longUrl}}" >
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">Go!</button>
+            </span>
+          </div><!-- /input-group -->
+        </form>
+        </div>
+        <br>
+        <br>
+
+        <div class="col-md-offset-1 col-md-10 ">
+         <form action="/getLongUrl" method="post" id="postForm2" class="form-group">
+          <div class="input-group" >
+            <span class="input-group-btn">
+              <text class="btn btn-default" type="text" >Short Url</text>
+            </span>
+            <input type="text" class="form-control" name="shorturl" placeholder="Search for long url" value="{{.shortUrl}}">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">Go!</button>
+            </span>
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+        </form>
+      </div><!-- /.row -->
+
+  </div>
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-<!--     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <script src="/static/libs/jquery/jquery.min.js"></script>
+    <script src="/static/libs/bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>
 {{end}}
