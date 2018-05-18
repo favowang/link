@@ -20,8 +20,9 @@ func main() {
 	router.LoadHTMLGlob("views/**/*")
 
 	router.GET("/", controllers.GetIndex)
-	router.POST("/getShortUrl", controllers.GetShortUrl)
-	router.POST("/getLongUrl", controllers.GetLongUrl)
+	router.GET("/getLongUrl/:shorturl", controllers.GetLongUrl)
+	router.POST("/getShortUrl", controllers.PostShortUrl)
+	router.POST("/PostLongUrl", controllers.GetLongUrl)
 	router.Static("/static", "./static")
 	defer DB.Close()
 	router.Run(":8080")

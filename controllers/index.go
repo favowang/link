@@ -10,7 +10,12 @@ func GetIndex(c *gin.Context) {
 	c.HTML(http.StatusOK, "index/index.html", gin.H{})
 }
 
-func GetShortUrl(c *gin.Context) {
+// func GetShortUrl(c *gin.Context) {
+// 	longurl := c.Param("longurl")
+// 	shorturl := models.GetShortUrl(longurl)
+// 	c.String(http.StatusOK, shorturl)
+// }
+func PostShortUrl(c *gin.Context) {
 	longurl := c.PostForm("longurl")
 
 	shorturl := models.GetShortUrl(longurl)
@@ -21,6 +26,15 @@ func GetShortUrl(c *gin.Context) {
 }
 
 func GetLongUrl(c *gin.Context) {
+	shorturl := c.Param("shorturl")
+
+	longurl, _ := models.GetLongUrl(shorturl)
+
+	c.String(http.StatusOK, longurl)
+
+}
+
+func PostLongUrl(c *gin.Context) {
 	shorturl := c.PostForm("shorturl")
 
 	longurl, _ := models.GetLongUrl(shorturl)
